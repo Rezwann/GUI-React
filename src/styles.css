@@ -1,0 +1,928 @@
+body {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 0px;
+  background: rgb(225, 36, 75);
+  background: radial-gradient(
+    circle,
+    rgba(225, 36, 75, 1) 30%,
+    rgba(170, 21, 53, 1) 51%,
+    rgba(192, 27, 62, 1) 82%
+  );
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text for sidebar */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 18rem;
+  background-color: #6e0018;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 50px;
+  padding: 10px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+/*sidebar "share app" text*/
+.astext {
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #bdc3c7;
+}
+
+/*main temperature */
+.tempdegree {
+  font-size: 40px;
+  font-weight: 800;
+  color: white;
+  margin-top: -5px;
+  text-align: center;
+}
+/*main date */
+.resultdate {
+  font-size: 1.4rem;
+  color: white;
+  margin-top: -39px;
+  text-align: center;
+  padding: 5px;
+}
+
+/* weather description */
+.resultdesc {
+  text-align: center;
+  color: white;
+  font-size: 1.2rem;
+}
+
+/* search results */
+.result-info {
+  font-size: 20px;
+  word-spacing: 52px;
+  padding-left: 23px;
+  margin-top: 7.5rem;
+}
+
+.result-info-wind {
+  margin-left: 22rem;
+}
+
+.ul-time {
+  font-size: 20px;
+}
+
+/* Search error message */
+.error {
+  position: absolute;
+  top: 62.5px;
+  left: 10.5rem;
+  color: white;
+  font-size: 0.8rem;
+  letter-spacing: 2.5px;
+}
+
+/* search help message */
+.searchA {
+  margin: 100px auto;
+  font-size: 35px;
+  color: white;
+  opacity: 0.75;
+  text-align: center;
+  font-weight: 400;
+}
+
+/* help message */
+.submessage {
+  margin-top: -9rem;
+  margin-left: 4.5rem;
+  font-size: 1rem;
+  position: absolute;
+}
+
+a {
+  color: #d1d1d1;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* unvisited link */
+a:link {
+  text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+  text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+  text-decoration: none;
+}
+
+/* selected link */
+a:active {
+  text-decoration: none;
+}
+
+/* search bar */
+.search {
+  margin: 0;
+  margin-top: 25px;
+  width: 475px;
+  height: 200px;
+}
+
+/* removing standard clear button from browsers */
+input[type="search"]::-ms-clear {
+  display: none;
+  width: 0;
+  height: 0;
+}
+input[type="search"]::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* clears the 'X' from Chrome users */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
+}
+
+/* basic search button style */
+.nostyle {
+  background: none;
+  border: none;
+  padding: 0;
+  opacity: 0.65;
+  display: inline-block;
+  background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMjQiIGhlaWdodD0iMjQiCnZpZXdCb3g9IjAgMCAyNCAyNCIKc3R5bGU9IiBmaWxsOiNmZmZmZmY7Ij4gICAgPHBhdGggZD0iTSA5IDIgQyA1LjE0NTg1MTQgMiAyIDUuMTQ1ODUxNCAyIDkgQyAyIDEyLjg1NDE0OSA1LjE0NTg1MTQgMTYgOSAxNiBDIDEwLjc0Nzk5OCAxNiAxMi4zNDUwMDkgMTUuMzQ4MDI0IDEzLjU3NDIxOSAxNC4yODEyNSBMIDE0IDE0LjcwNzAzMSBMIDE0IDE2IEwgMjAgMjIgTCAyMiAyMCBMIDE2IDE0IEwgMTQuNzA3MDMxIDE0IEwgMTQuMjgxMjUgMTMuNTc0MjE5IEMgMTUuMzQ4MDI0IDEyLjM0NTAwOSAxNiAxMC43NDc5OTggMTYgOSBDIDE2IDUuMTQ1ODUxNCAxMi44NTQxNDkgMiA5IDIgeiBNIDkgNCBDIDExLjc3MzI2OCA0IDE0IDYuMjI2NzMxNiAxNCA5IEMgMTQgMTEuNzczMjY4IDExLjc3MzI2OCAxNCA5IDE0IEMgNi4yMjY3MzE2IDE0IDQgMTEuNzczMjY4IDQgOSBDIDQgNi4yMjY3MzE2IDYuMjI2NzMxNiA0IDkgNCB6Ij48L3BhdGg+PC9zdmc+")
+    50% 50% no-repeat;
+  background-repeat: no-repeat;
+  background-size: 30px;
+  width: 40px;
+  height: 40px;
+  background-position: 95% center;
+}
+
+.nostyle:hover {
+  opacity: 1;
+}
+
+/* search bar input */
+.search__input {
+  margin-left: 100px;
+  width: 70%;
+  padding: 10px 24px;
+  background-color: #9a9a9a;
+  opacity: 0.75;
+  transition: transform 250ms ease-in-out;
+  font-size: 16px;
+  line-height: 28px;
+  color: white;
+  border-radius: 50px;
+  border: 1px solid #ba2848;
+  transition: all 250ms ease-in-out;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+i {
+  position: relative;
+  color: #a5bbdd;
+  top: -25px;
+}
+
+.search__input::placeholder {
+  color: rgba(224, 224, 224, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+#Search::-ms-clear {
+  margin-right: 20px;
+}
+
+.sub {
+  border: none;
+  border-radius: 20px;
+  text-decoration: none;
+  margin-left: 23rem;
+  margin-top: -50px;
+  padding: 3px;
+  cursor: pointer;
+  position: absolute;
+  opacity: 0.65;
+  transition: transform 250ms ease-in-out;
+  font-size: 14px;
+}
+
+/* weather results container */
+.box {
+  width: 420px;
+  height: 40vh;
+  top: -400px;
+  left: -5px;
+  border-radius: 35px;
+  background: #2c354d;
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+  min-width: 190px;
+  min-height: 265px;
+  z-index: -100;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+/* weather container: before */
+.box2 {
+  width: 30vw;
+  height: 26.5vh;
+  top: -250px;
+  left: 20px;
+  border-radius: 35px;
+  background: #2c354d;
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+  min-width: 420px;
+  min-height: 220px;
+  z-index: -100;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+input,
+input::-webkit-input-placeholder {
+  font-size: 1rem;
+  line-height: 2;
+}
+
+/* weather information bar */
+.Results {
+  width: 26rem;
+  height: 5.5rem;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  min-width: 200px;
+  min-height: 500px;
+  margin-top: 0.6rem;
+  margin-left: 1.6rem;
+  margin-bottom: 0px;
+}
+
+.wave {
+  opacity: 0.3;
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  background: white;
+  width: 500px;
+  height: 500px;
+  margin-left: -250px;
+  margin-top: -250px;
+  transform-origin: 50% 48%;
+  border-radius: 43%;
+  animation: drift 3000ms infinite linear;
+  z-index: 1;
+  opacity: 0.2;
+}
+
+.wave.-three {
+  animation: drift 50000ms infinite linear;
+  z-index: 2 !important;
+  opacity: 0.7;
+}
+
+.wave.-two {
+  animation: drift 5000ms infinite linear;
+  opacity: 0.4;
+  z-index: 3 !important;
+}
+
+.box:after {
+  content: "";
+  display: block;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 11;
+  transform: translate3d(0, 0, 0);
+}
+
+@keyframes drift {
+  from {
+    transform: rotate(0deg);
+  }
+  from {
+    transform: rotate(360deg);
+  }
+}
+
+/* reuslt details */
+
+.location {
+  text-align: center;
+  font-weight: 800;
+  color: white;
+  margin-top: -125px;
+  padding: 20px;
+  font-size: 1.3rem;
+}
+
+/* weather icon */
+.weathercon {
+  margin-left: 7rem;
+  margin-bottom: 0;
+  margin-top: -25px;
+  padding: 0;
+}
+
+@media (max-width: 600px) {
+  .box {
+    position: relative;
+    bottom: 135px;
+    margin: 0 auto;
+    width: 90vw;
+    height: 1vh;
+  }
+
+  .wave {
+    top: 110%;
+  }
+
+  .weathercon {
+    font-size: 120px;
+  }
+
+  .info {
+    font-size: 1.5rem;
+  }
+}
+@media (max-height: 500px) {
+  .box {
+    height: 80vh;
+  }
+
+  .wave {
+    top: 115%;
+  }
+}
+
+/* weather bar information */
+.time {
+  position: static;
+  margin: 0 auto;
+  margin-top: 210px;
+  height: 80px;
+  width: 90vw;
+  border-radius: 20px;
+  background: white;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+.time > h3 {
+  position: relative;
+  margin: 10px 46.5px 10px 5px;
+  display: inline;
+  top: 15px;
+  left: 30px;
+}
+.time > p {
+  position: relative;
+  margin: 7px 70px 10px 5px;
+  display: inline-block;
+  top: 20px;
+  left: 25px;
+  font-size: 15px;
+}
+
+/* Quotes container */
+.motivation {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  margin: 0 auto;
+  margin-top: 15px;
+  width: 90vw;
+  height: 12vh;
+  border-radius: 20px;
+  background: white;
+  font-size: 13px;
+}
+/* outfit images */
+.ClothesAfter {
+  position: absolute;
+  margin: 0 auto;
+  margin-top: -40px;
+  width: 90vw;
+  height: 14vh;
+  border-radius: 20px;
+  margin-top: 115px;
+  margin-left: 23px;
+  background-position-x: 407.5px;
+  background-position-y: -70px;
+  background-size: cover;
+  background-image: no-repeat;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.clothes {
+  margin: 0 auto;
+  margin-top: -45px;
+  width: 90vw;
+  height: 14vh;
+  border-radius: 20px;
+  background-position-x: 407.5px;
+  background-position-y: -70px;
+  background-size: cover;
+  background-image: no-repeat;
+}
+
+/* outfit tab */
+.item {
+  position: relative;
+  top: 71px;
+  right: 130px;
+  margin: 0 auto;
+  margin-top: -55px;
+  width: 25vw;
+  height: 10vh;
+  border-radius: 20px;
+  background: white;
+  font-size: 1.5em;
+  opacity: 0.7;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.item_text {
+  position: relative;
+  top: 20px;
+  right: 0px;
+  /*width: 25vw;*/
+  text-align: center;
+  font-size: 1.2rem;
+  border: none;
+  background: none;
+  color: black;
+}
+
+/* student task list/schedule */
+.schedule {
+  margin: 0 auto;
+  margin-top: -0.5rem;
+  width: 90vw;
+  height: 12vh;
+  border-radius: 20px;
+  background: white;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+#page-wrap {
+  text-align: center;
+  /* Prevent sidebar from showing a scrollbar on page */
+  overflow: auto;
+}
+
+/* Individual item */
+.bm-item {
+  display: inline-block;
+
+  /* Sidebar item styling */
+  text-decoration: none;
+  margin-bottom: 10px;
+  color: #d1d1d1;
+  transition: color 0.5s;
+}
+
+/* styles from react-burger-menu docs */
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: absolute;
+  width: 36px;
+  height: 30px;
+  left: 36px;
+  top: 36px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: white;
+}
+
+/* sidebar item backgrounds */
+.menu-banner {
+  height: 3.5rem;
+  margin-left: -1.8rem;
+  margin-top: -1rem;
+  width: 23rem;
+  overflow: hidden; /* Hide scrollbars */
+}
+
+.dark-menu-banner {
+  padding-top: 0.35rem;
+  padding-bottom: 0.35rem;
+  height: 3rem;
+  margin-left: -2.4rem;
+  width: 23.2rem;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  position: absolute;
+  margin-top: 1.6rem;
+  left: 18.6rem;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  background: rgb(4, 17, 75);
+  background: radial-gradient(
+    circle,
+    rgba(4, 17, 75, 1) 13%,
+    rgba(8, 20, 71, 1) 65%,
+    rgba(5, 11, 62, 1) 96%
+  );
+  padding: 3.05em 2.4em 0;
+  font-size: 1.3em;
+  width: 22rem;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #bdc3c7;
+  width: 0.2rem !important;
+  height: 2.3rem !important;
+  left: 0.8rem;
+}
+
+.menu-second-half {
+  position: absolute;
+  font-size: 1.3rem;
+  margin-top: -50px;
+  margin-left: 10px;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  font-weight: bold;
+}
+
+.bottom-menu-second-half {
+  position: absolute;
+  font-size: 1.3rem;
+  margin-top: -50px;
+  margin-left: 10px;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  font-weight: bold;
+  color: #747373;
+}
+
+.menu-images {
+  padding-top: 0.5rem;
+  opacity: 0.8;
+}
+
+.menu-images:hover {
+  opacity: 1;
+  transition: 0.9s;
+}
+
+.menu-image-size {
+  height: 5.4rem;
+  width: 19.5rem;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  margin-left: -25px;
+  color: #b8b7ad;
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* forecast table search option */
+.forecast-results {
+  margin-top: 10rem;
+  margin-left: -30.5rem;
+  position: absolute;
+  z-index: 1000;
+  width: 90rem;
+}
+
+.forecast-button {
+  width: 100%;
+  background-color: #55607e;
+  transition: transform 250ms ease-in-out;
+  font-size: 16px;
+  line-height: 28px;
+  color: white;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+/* forecast table */
+table.FTable {
+  width: 100%;
+  border-collapse: collapse;
+  color: #000000;
+}
+
+table.FTable td,
+table.FTable th {
+  border-width: 1.5px;
+  border-color: #55607e;
+  border-style: solid;
+  padding: 3px;
+  font-size: 1rem;
+}
+
+table.FTable thead {
+  background-color: #55607e;
+  border-color: #55607e;
+}
+
+table.FTable th {
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+}
+table.FTable td {
+  text-align: center;
+  padding: 2px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 20px;
+  letter-spacing: 2px;
+  line-height: 1.36rem;
+  background-color: #a4b0d1a4;
+  border: none;
+}
+
+/* Quotes/student motivation */
+/* refresh quote button */
+.btn {
+  position: absolute;
+  top: 33.3rem;
+  left: 24rem;
+  background: none;
+  border: none;
+  color: black;
+  width: 50px;
+  height: 35px;
+  padding: 0;
+  font-size: 30px;
+  border-radius: 0px;
+  cursor: pointer;
+}
+
+.QuotesTitle {
+  padding: 7px;
+  text-align: center;
+}
+
+.QuotesText {
+  position: absolute;
+  top: 35rem;
+  left: 2.3rem;
+  width: 25rem;
+  font-style: italic;
+}
+
+/* mini schedule/study session to do list */
+.add-form {
+  margin-bottom: 10px;
+}
+
+.task_whitespace {
+  background-color: white;
+  height: 4vh;
+}
+
+.whitespace {
+  background-color: white;
+  height: 3vh;
+}
+
+/* study session task tracking */
+.session-container {
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.01);
+  height: auto;
+  padding-bottom: 1rem;
+}
+
+.container {
+  background-color: white;
+  max-width: 380px;
+  margin: 27px auto;
+  overflow: auto;
+  min-height: 100px;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.sessiontitle {
+  font-size: 20px;
+  text-align: center;
+  margin: 20px;
+  margin-left: -17rem;
+  margin-top: -2.2rem;
+  padding: 5px;
+}
+
+/* change task list */
+.changebutton {
+  display: inline-block;
+  color: #fff;
+  border: none;
+  padding: 9px 0px;
+  margin-left: 17.3rem;
+  border-radius: 20px;
+  width: 110px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+/* add task to list */
+.sessionbutton {
+  display: inline-block;
+  background: rgb(1, 119, 1);
+  color: #fff;
+  border: none;
+  padding: 2.8px 0px;
+  margin-top: -0.45rem;
+  margin-left: 9.5rem;
+  border-radius: 20px;
+  width: 110px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+/* individual task result */
+.task {
+  background: #4188c2;
+  width: 88%;
+  height: 5.5vh;
+  margin-top: 0.75rem;
+  border-radius: 8px;
+  color: #c7e9ff;
+  font-size: 1rem;
+  padding: 2px 25px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.task > h3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* entering task */
+.task_input {
+  width: 97%;
+  margin-top: -5rem;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: lightgrey;
+}
+
+.main-tasks {
+  margin-top: -3rem;
+}
+
+.missing-task-text {
+  margin-top: 3.5rem;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+/* Button to reload app */
+
+.ReloadButton {
+  width: 30rem;
+  font-size: 1.2rem;
+  margin-top: -5rem;
+  margin-left: -2rem;
+  padding: 0.8rem;
+  background: rgb(184, 208, 216);
+  border-width: 0px;
+  color: rgb(43, 109, 131);
+  font-weight: 600;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+
+.ReloadButton:hover {
+  color: rgb(82, 134, 151);
+  background: rgb(201, 215, 219);
+}
+
+/* Study Session Timer */
+.Timer {
+  margin: 0 auto;
+  margin-top: 70px;
+  width: 90vw;
+  height: 15vh;
+  border-radius: 20px;
+  background: white;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.TimerTitle {
+  font-size: 20px;
+  text-align: center;
+  margin: 5px;
+  margin-left: 0.8rem;
+  padding: 10px;
+}
+
+.TimerCurrent {
+  font-size: 1.7rem;
+  text-align: center;
+  margin-top: -0.8rem;
+  margin-left: 0rem;
+  padding: 5px;
+  font-weight: 500;
+}
+
+/* change task list */
+.TimerButton {
+  color: #fff;
+  background-color: #55607e;
+  border: none;
+  padding: 9px 0px;
+  border-radius: 20px;
+  width: 110px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  margin-left: 6rem;
+  margin-top: -1rem;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+/* change task list */
+.TimerButtonTwo {
+  color: #fff;
+  background-color: #55607e;
+  border: none;
+  padding: 9px 0px;
+  border-radius: 20px;
+  width: 110px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  margin-top: -5rem;
+  margin-left: 1rem;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
